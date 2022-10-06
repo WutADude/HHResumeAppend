@@ -58,9 +58,9 @@
                 try
                 {
                     if (!Resumes.ContainsKey(Resume_ID))
-                        Resumes.Add(Resume_ID, DateTime.Parse(Element.GetProperty("resume").GetProperty("next_publish_at").GetString()));
+                        Resumes.Add(Resume_ID, DateTime.Parse(Element.GetProperty("resume").GetProperty("next_publish_at").GetString()).AddMinutes(1));
                     else
-                        Resumes[Resume_ID] = DateTime.Parse(Element.GetProperty("resume").GetProperty("next_publish_at").GetString());
+                        Resumes[Resume_ID] = DateTime.Parse(Element.GetProperty("resume").GetProperty("next_publish_at").GetString()).AddMinutes(1);
                 }
                 catch { } // Some have no next_publish date
             }

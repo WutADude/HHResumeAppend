@@ -249,6 +249,7 @@
             this.MainButton.Name = "MainButton";
             this.MainButton.Size = new System.Drawing.Size(397, 41);
             this.MainButton.TabIndex = 5;
+            this.MainButton.TabStop = false;
             this.MainButton.Text = "Запустить";
             this.MainButton.UseVisualStyleBackColor = false;
             this.MainButton.Click += new System.EventHandler(this.MainButton_Click);
