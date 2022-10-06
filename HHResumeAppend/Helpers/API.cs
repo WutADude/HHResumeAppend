@@ -17,26 +17,32 @@
 
         internal async void MainWorker()
         {
-            while (_MainForm._ISWorking)
+            try
             {
-                foreach (var Resume in Resumes)
+                while (_MainForm._ISWorking)
                 {
-                    if (DateTime.Compare(DateTime.Now, Resume.Value) >= 0 && _MainForm._ISWorking)
+                    foreach (var Resume in Resumes)
                     {
-                        try
+                        if (DateTime.Compare(DateTime.Now, Resume.Value) >= 0 && _MainForm._ISWorking)
                         {
-                            if (await Requests.isSuccessAppended(Resume.Key))
+                            try
                             {
-                                _MainForm.AppendsCountLabel.Text = $"Последнее поднятие:\n{DateTime.Now.ToString("HH:mm dd.MM.yyyy")}";
+                                if (await Requests.isSuccessAppended(Resume.Key))
+                                {
+                                    _MainForm.AppendsCountLabel.Text = $"Последнее поднятие:\n{DateTime.Now.ToString("HH:mm dd.MM.yyyy")}";
+                                    Resume.Value.AddHours(4);
+                                }
+                                else
+                                    _MainForm.AppendsCountLabel.Text = "Не удалось поднять резюме!";
                             }
-                            else
-                                _MainForm.AppendsCountLabel.Text = "Не удалось поднять резюме!";
+                            catch { }
                         }
-                        catch { }
+                        _MainForm.ClosestAppendLabel.Text = $"{GetClosestAppendDate.ToString("HH:mm dd.MM.yyyy")}";
                     }
+                    Thread.Sleep(300000);
                 }
-                Thread.Sleep(1800000);
             }
+            catch { }
         }
 
         private void GetUserInfo()
@@ -58,6 +64,8 @@
                 catch { } // Some have no next_publish date
             }
         }
+
+        private DateTime GetClosestAppendDate => Resumes.OrderBy(r => r.Value).First().Value;
     }
 }
 

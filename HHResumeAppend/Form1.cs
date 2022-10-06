@@ -1,4 +1,5 @@
 using HHResumeAppend.Helpers;
+using System.Threading;
 
 namespace HHResumeAppend
 {
@@ -19,16 +20,19 @@ namespace HHResumeAppend
 
         private void BeginOrStop()
         {
+            CancellationTokenSource TokenSource = new CancellationTokenSource();
+            CancellationToken CancelToken = TokenSource.Token;
             if (!_ISWorking)
             {
                 _ISWorking = true;
                 MainButton.Text = "Остановить";
-                new Thread(delegate () { _Api.MainWorker(); }) { IsBackground = true }.Start();
+                new Task(()=>{ _Api.MainWorker(); }, CancelToken).Start();
                 TokenPasteLabel.Enabled = false;
             }
             else
             {
                 _ISWorking = false;
+                CancelToken.ThrowIfCancellationRequested();
                 MainButton.Text = "Запустить";
                 TokenPasteLabel.Enabled = true;
             }

@@ -37,6 +37,8 @@
             this.TokenGB = new System.Windows.Forms.GroupBox();
             this.TokenPasteLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ClosestAppendLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.ResumeCountLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.FirstNameLabel = new System.Windows.Forms.Label();
@@ -131,6 +133,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ClosestAppendLabel);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.ResumeCountLabel);
             this.groupBox1.Controls.Add(this.lastNameLabel);
             this.groupBox1.Controls.Add(this.FirstNameLabel);
@@ -140,9 +144,29 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 154);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(397, 125);
+            this.groupBox1.Size = new System.Drawing.Size(397, 145);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // ClosestAppendLabel
+            // 
+            this.ClosestAppendLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClosestAppendLabel.Location = new System.Drawing.Point(155, 116);
+            this.ClosestAppendLabel.Name = "ClosestAppendLabel";
+            this.ClosestAppendLabel.Size = new System.Drawing.Size(236, 20);
+            this.ClosestAppendLabel.TabIndex = 11;
+            this.ClosestAppendLabel.Text = "...";
+            this.ClosestAppendLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(6, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(154, 20);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Ближайшее поднятие:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ResumeCountLabel
             // 
@@ -221,7 +245,7 @@
             this.MainButton.Enabled = false;
             this.MainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MainButton.ForeColor = System.Drawing.Color.Black;
-            this.MainButton.Location = new System.Drawing.Point(12, 285);
+            this.MainButton.Location = new System.Drawing.Point(12, 305);
             this.MainButton.Name = "MainButton";
             this.MainButton.Size = new System.Drawing.Size(397, 41);
             this.MainButton.TabIndex = 5;
@@ -234,7 +258,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(423, 338);
+            this.ClientSize = new System.Drawing.Size(423, 353);
             this.Controls.Add(this.MainButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TokenGB);
@@ -271,5 +295,7 @@
         private Button MainButton;
         private Label GitLinkLabel;
         internal Label AppendsCountLabel;
+        private Label label7;
+        internal Label ClosestAppendLabel;
     }
 }
