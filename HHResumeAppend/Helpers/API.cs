@@ -30,7 +30,7 @@
                                 if (await Requests.isSuccessAppended(Resume.Key))
                                 {
                                     _MainForm.AppendsCountLabel.Text = $"Последнее поднятие:\n{DateTime.Now.ToString("HH:mm dd.MM.yyyy")}";
-                                    Resume.Value.AddHours(4);
+                                    Resumes[Resume.Key] = Resume.Value.AddHours(4);
                                 }
                                 else
                                     _MainForm.AppendsCountLabel.Text = "Не удалось поднять резюме!";
@@ -47,6 +47,7 @@
 
         private void GetUserInfo()
         {
+            
             string JSON = Requests.GetJson(Token, "https://api.hh.ru/me?with_user_statuses=true&host=hh.ru&locale=RU");
             FirstName = JsonParser.GetFirstName(JSON);
             LastName = JsonParser.GetLastName(JSON);
