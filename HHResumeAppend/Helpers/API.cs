@@ -39,7 +39,7 @@
                         }
                         _MainForm.ClosestAppendLabel.Text = $"{GetClosestAppendDate.ToString("HH:mm dd.MM.yyyy")}";
                     }
-                    Thread.Sleep(300000);
+                    Thread.Sleep((int)TotalSleepMilisec.TotalMilliseconds);
                 }
             }
             catch { }
@@ -67,6 +67,8 @@
         }
 
         private DateTime GetClosestAppendDate => Resumes.OrderBy(r => r.Value).First().Value;
+
+        private TimeSpan TotalSleepMilisec => GetClosestAppendDate - DateTime.Now;
     }
 }
 
