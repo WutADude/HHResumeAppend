@@ -30,7 +30,7 @@
                                 if (await Requests.isSuccessAppended(Resume.Key))
                                 {
                                     _MainForm.AppendsCountLabel.Text = $"Последнее поднятие:\n{DateTime.Now.ToString("HH:mm dd.MM.yyyy")}";
-                                    Resumes[Resume.Key] = Resume.Value.AddHours(4);
+                                    Resumes[Resume.Key] = Resume.Value.AddHours(4).AddMinutes(1);
                                 }
                                 else
                                     _MainForm.AppendsCountLabel.Text = "Не удалось поднять резюме!";
